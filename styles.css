@@ -1,0 +1,143 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:#1f2937;background:#faf9fc;line-height:1.7}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.center{text-align:center}
+
+/* 导航 */
+.nav{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;z-index:10}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-weight:700;color:#7c3aed;text-decoration:none;font-size:22px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:#6b7280;text-decoration:none;font-size:16px}
+.nav-links a.active,.nav-links a:hover{color:#7c3aed}
+.nav-right{display:flex;gap:16px;align-items:center}
+.icon-btn{text-decoration:none;font-size:22px}
+
+/* 视图 */
+.view{display:none}
+.view.active{display:block}
+
+/* 通用 */
+.page{padding:60px 24px;min-height:70vh}
+.section-title{font-size:34px;text-align:center;margin-bottom:16px}
+.section-sub{text-align:center;color:#6b7280;margin-bottom:50px;font-size:17px}
+.muted{color:#6b7280;font-size:16px}
+.center-text{text-align:center}
+.row{display:flex;gap:16px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.card{background:#fff;border:1px solid #eef0f4;border-radius:16px;padding:32px;margin-top:24px}
+.error{color:#dc2626;font-size:15px;margin-bottom:14px;min-height:1.4em}
+
+/* 首屏 */
+.hero{padding:110px 0;text-align:center;background:linear-gradient(180deg,#f3e8ff,#faf9fc)}
+.hero h1{font-size:54px;line-height:1.25;margin-bottom:24px}
+.hero p{color:#6b7280;font-size:20px;max-width:700px;margin:0 auto 36px}
+
+/* 按钮 */
+.btn{display:inline-block;padding:14px 36px;border-radius:999px;background:#7c3aed;color:#fff;text-decoration:none;border:none;cursor:pointer;font-size:16px;transition:.2s;font-family:inherit}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(124,58,237,.3)}
+.btn.ghost{background:#fff;color:#7c3aed;border:1px solid #e9d5ff}
+.btn.active{background:#7c3aed;color:#fff}
+.btn-small{padding:8px 20px;border-radius:999px;background:#7c3aed;color:#fff;text-decoration:none;font-size:14px;border:none;cursor:pointer;font-family:inherit}
+.btn-small:disabled{opacity:.6;cursor:not-allowed}
+
+/* 关于 */
+.about{max-width:900px;scroll-margin-top:90px}
+.about p{margin-bottom:20px;color:#374151;font-size:18px}
+
+/* 时间线 */
+.timeline{max-width:860px;margin:0 auto}
+.timeline-item{display:flex;align-items:center;gap:32px;padding:24px 0;border-bottom:1px solid #f1f1f4;font-size:16px}
+.timeline-year{color:#7c3aed;font-weight:700;min-width:110px;font-size:18px}
+
+/* 卡片网格 */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px}
+.project{background:#fff;border-radius:16px;padding:32px;border:1px solid #eef0f4;position:relative;}
+.project h3{font-size:20px;margin-bottom:12px}
+.project p{color:#6b7280;font-size:15px}
+.tag{display:inline-block;margin-top:18px;padding:4px 12px;border-radius:999px;background:#f3e8ff;color:#7c3aed;font-size:13px}
+
+/* 超级管理员专属标签样式 */
+.tag.super-admin {
+  background: linear-gradient(135deg, #fef08a, #f59e0b);
+  color: #78350f;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);
+  margin-top: 0;
+}
+
+/* 成员 */
+.members{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.members>.member:last-child:nth-child(3n+1){grid-column:2}
+.member{background:#fff;border-radius:20px;padding:36px 24px;text-align:center;border:1px solid #eef0f4;transition:.25s}
+.member:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.avatar{width:90px;height:90px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;background:#f3e8ff;color:#7c3aed;font-size:32px;font-weight:700}
+.member h3{font-size:20px;margin-bottom:6px}
+.member .role{color:#7c3aed;font-size:14px;margin-bottom:12px}
+.member .desc{color:#6b7280;font-size:14px}
+
+/* ============ 谎精图鉴卡片 ============ */
+.mascot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+.mascot-card { background: #fff; border: 2px solid #eef0f4; border-radius: 16px; padding: 30px 20px; text-align: center; transition: .3s; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.mascot-card:hover { border-color: #7c3aed; transform: translateY(-5px); box-shadow: 0 10px 25px rgba(124,58,237,.15); }
+.mascot-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #7c3aed, #ec4899); }
+.m-name { font-size: 22px; font-weight: bold; color: #1f2937; margin-bottom: 10px; }
+.m-title { display: inline-block; padding: 6px 16px; background: #f3e8ff; color: #7c3aed; border-radius: 999px; font-size: 14px; font-weight: 500; }
+
+/* 搜索 */
+.search-input{width:100%;padding:18px 24px;border:1px solid #e5e7eb;border-radius:14px;font-size:18px;margin:24px 0}
+.result-list{list-style:none}
+.result-list li{padding:16px 0;border-bottom:1px solid #f1f1f4;font-size:16px}
+
+/* 表单 */
+.form{max-width:460px;margin:0 auto}
+.form input{width:100%;padding:16px 20px;border:1px solid #e5e7eb;border-radius:14px;font-size:16px;margin-bottom:16px;font-family:inherit}
+.form .btn{width:100%;padding:16px;font-size:18px}
+
+/* ============ 免责声明 ============ */
+#disclaimer-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 9999999; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.disclaimer-box { background: #fff; padding: 30px; border-radius: 20px; max-width: 500px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+/* ============ 加载画面 ============ */
+#loading-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #faf9fc; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
+.loader-logo { font-size: 64px; font-weight: 900; color: #7c3aed; margin-bottom: 24px; letter-spacing: 3px; animation: pulse 1.5s infinite; }
+.loader-spinner { width: 50px; height: 50px; border: 5px solid #f3e8ff; border-top: 5px solid #7c3aed; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 24px; }
+.loader-text { color: #6b7280; font-size: 16px; letter-spacing: 1.5px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(0.95); } }
+
+/* ============ Rickroll 彩蛋 ============ */
+#rickroll-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.95); z-index: 999999; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+
+/* ============ 秘密实验室 ============ */
+.egg-grid { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.fake-progress-container { width: 100%; height: 20px; background: #e5e7eb; border-radius: 10px; margin-top: 15px; overflow: hidden; display: none; }
+.fake-progress-bar { width: 0%; height: 100%; background: #10b981; transition: width 0.1s linear; }
+
+/* ============ 自定义弹窗 ============ */
+#custom-alert-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 1000000; align-items: center; justify-content: center; }
+#custom-alert-box { background: #fff; padding: 30px; border-radius: 20px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+#custom-alert-box h3 { margin-bottom: 10px; font-size: 22px; }
+#custom-alert-box p { color: #4b5563; margin-bottom: 20px; font-size: 16px; }
+@keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* 测谎仪震动特效 */
+@keyframes shake { 0%, 100% { transform: translateX(0); } 10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); } 20%, 40%, 60%, 80% { transform: translateX(10px); } }
+.shake-active { animation: shake 0.5s ease-in-out; }
+
+/* 响应式 */
+@media(max-width:1024px){ .members{grid-template-columns:repeat(2,1fr)} .members>.member:last-child:nth-child(3n+1){grid-column:auto} }
+@media(max-width:768px){
+  .nav-inner{flex-wrap:wrap;height:auto;padding:12px 0;gap:12px}
+  .nav-links{display:flex;gap:20px;width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:15px}
+  .hero{padding:80px 0 60px}
+  .hero h1{font-size:38px}
+  .hero p{font-size:18px}
+  .page{padding:40px 24px}
+  .members{grid-template-columns:1fr}
+  .form{padding:24px}
+  #rickroll-overlay h1 { font-size: 24px !important; }
+  #rickroll-overlay p { font-size: 14px !important; }
+}

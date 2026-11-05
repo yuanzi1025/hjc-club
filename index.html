@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HJC谎精俱乐部</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 免责声明遮罩 -->
+  <div id="disclaimer-overlay">
+    <div class="disclaimer-box">
+      <h2 style="color: #dc2626; margin-bottom: 16px; text-align: center;">⚠️ 免责声明</h2>
+      <div style="text-align: left; margin-bottom: 24px; font-size: 15px; line-height: 1.8; color: #374151;">
+        <p style="margin-bottom: 10px;">
+          本网站由 <strong>孙狗酷</strong> 授权创建，本网站<strong>纯属娱乐和搞怪</strong>，并无其他意图。
+        </p>
+        <p>
+          如有疑问或需要创建网站，请拨打：<br>
+          <strong style="color: #7c3aed; font-size: 18px;">153-4910-1060</strong>
+        </p>
+      </div>
+      <button id="agreeBtn" class="btn" disabled style="width: 100%; background: #9ca3af; cursor: not-allowed;">
+        请阅读 (5s)
+      </button>
+    </div>
+  </div>
+
+  <!-- 加载画面 -->
+  <div id="loading-screen">
+    <div class="loader-logo">HJC</div>
+    <div class="loader-spinner"></div>
+    <p class="loader-text">正在确认你是不是一个合格的谎精...</p>
+  </div>
+
+  <!-- Rickroll 彩蛋遮罩 -->
+  <div id="rickroll-overlay">
+    <h1 style="color: #7c3aed; font-size: 32px; margin-bottom: 10px;">你被骗了！🤡</h1>
+    <p style="color: #fff; margin-bottom: 20px; font-size: 16px;">欢迎来到谎精俱乐部，这是我们的传统艺能。</p>
+    <iframe id="rickroll-video" src="https://player.bilibili.com/player.html?bvid=BV1GJ411x7h7&page=1&high_quality=1&danmaku=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="true" style="width: 100%; aspect-ratio: 16 / 9; border: none; border-radius: 12px; margin-bottom: 24px;"></iframe>
+    <button class="btn" id="closeRickroll" style="background: #dc2626; color: #fff; border: none; padding: 12px 28px; border-radius: 999px; font-size: 16px; cursor: pointer; font-weight: bold;">我认栽，关闭吧</button>
+  </div>
+
+<header class="nav">
+  <nav class="container nav-inner">
+    <a href="#/" class="logo">HJC谎精俱乐部</a>
+    <ul class="nav-links">
+      <li><a href="#/" data-nav="home" data-i18n="home">主页</a></li>
+      <li><a href="#/mascot" data-nav="mascot" data-i18n="mascot">吉祥物</a></li>
+      <li><a href="#/history" data-nav="history" data-i18n="history">发展历史</a></li>
+      <li><a href="#/events" data-nav="events" data-i18n="events">重大事件</a></li>
+      <li><a href="#/leadership" data-nav="leadership" data-i18n="leadership">管理层</a></li>
+      <li><a href="#/search" data-nav="search" data-i18n="search">搜索</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#/settings" class="icon-btn" title="设置">⚙️</a>
+      <a href="javascript:void(0)" class="btn-small" id="logoutBtn" style="display:none; background:#ef4444; border-color:#ef4444;">退出</a>
+      <a href="#/login" class="btn-small" id="authBtn" data-i18n="login">登录</a>
+    </div>
+  </nav>
+</header>
+
+<main id="app">
+  <section class="view" data-view="home">
+    <div class="hero">
+      <div class="container">
+        <h1 data-i18n="heroTitle">我们说的每一句话，都值得你再确认一遍</h1>
+        <p data-i18n="heroSub">HJC谎精俱乐部，一个专注于语言艺术的同学组织。</p>
+        <a href="#/events" class="btn" data-i18n="learnMore">点击我了解更多 ↓</a>
+      </div>
+    </div>
+    
+    <div class="container page about" id="more">
+      <h2 class="section-title" data-i18n="aboutTitle">加入我们</h2>
+      <p data-i18n="about1">加入前请认真阅读以下须知：</p>
+      <p data-i18n="about2">1. 必须做一个合格的谎精。</p>
+      <p data-i18n="about3">2. 禁止侮辱谎精俱乐部，违者将被踢出。</p>
+      <p data-i18n="joinRule3">3. 禁止内讧，友好相处。</p>
+      <p data-i18n="joinContact" style="color:#7c3aed;font-weight:bold;margin-top:20px;">请联系部长或拨打 138-1145-1145（孙部长）</p>
+      
+      <div class="row">
+        <a href="#/history" class="btn ghost" data-i18n="seeHistory">看发展历史</a>
+        <a href="#/leadership" class="btn ghost" data-i18n="seeLeadership">认识管理层</a>
+      </div>
+
+      <!-- 未登录限制区域 -->
+      <div id="vip-content" style="display: none;">
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="javascript:void(0)" id="secretBtn" style="color: #dc2626; font-weight: bold; text-decoration: underline; cursor: pointer; animation: pulse 1.5s infinite; font-size: 18px;">
+            🚨 千万别点这里！🚨
+          </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; border-top: 2px dashed #e5e7eb; padding-top: 30px;">
+          <h3 style="color: #7c3aed; margin-bottom: 20px;">🧪 谎精秘密实验室</h3>
+          <div class="egg-grid">
+            <button class="btn ghost" id="fortuneBtn">🔮 测试今日运势</button>
+            <button class="btn ghost" id="fakeDownloadBtn" style="color: #10b981; border-color: #10b981;">📥 下载入会申请表</button>
+            <button class="btn ghost" id="lieDetectorBtn" style="color: #ef4444; border-color: #ef4444;">🩺 谎精测谎仪</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 未登录提示 -->
+      <div id="login-prompt" style="text-align: center; margin-top: 50px; padding: 40px; background: #f3f4f6; border-radius: 16px; border: 2px dashed #d1d5db;">
+        <h3 style="color: #4b5563; margin-bottom: 10px;">🔒 内容已隐藏</h3>
+        <p class="muted" style="margin-bottom: 20px;">登录后即可解锁“谎精秘密实验室”及隐藏陷阱。</p>
+        <a href="#/login" class="btn">立即登录解锁</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 1. 吉祥物（双重结构：锁 + 真内容） -->
+  <section class="view" data-view="mascot">
+    <div class="container page locked-content" style="text-align: center; padding-top: 100px;">
+      <h2 style="color: #ef4444; font-size: 32px;">🔒 内容已隐藏</h2>
+      <p class="muted" style="margin: 20px 0;">登录后即可查看俱乐部的各路神仙图鉴。</p>
+      <a href="#/login" class="btn">立即登录解锁</a>
+    </div>
+    <div class="container page real-content" style="display: none;">
+      <h1 class="section-title" data-i18n="mascotTitle">谎精图鉴（吉祥物）</h1>
+      <div class="center" style="margin-bottom: 40px;">
+        <p class="muted" data-i18n="mascotDesc">本俱乐部吉祥物及各路神仙，形象由内部投票决定，投票过程存在争议。</p>
+      </div>
+      <div class="mascot-grid" id="mascotList"></div>
+    </div>
+  </section>
+
+  <!-- 2. 发展历史 -->
+  <section class="view" data-view="history">
+    <div class="container page locked-content" style="text-align: center; padding-top: 100px;">
+      <h2 style="color: #ef4444; font-size: 32px;">🔒 内容已隐藏</h2>
+      <p class="muted" style="margin: 20px 0;">登录后即可查看俱乐部的发展历史。</p>
+      <a href="#/login" class="btn">立即登录解锁</a>
+    </div>
+    <div class="container page real-content" style="display: none;">
+      <h1 class="section-title" data-i18n="historyTitle">发展历史</h1>
+      <p class="section-sub" data-i18n="historySub">按时间顺序，真实性递减</p>
+      <div class="timeline" id="historyList"></div>
+    </div>
+  </section>
+
+  <!-- 3. 重大事件 -->
+  <section class="view" data-view="events">
+    <div class="container page locked-content" style="text-align: center; padding-top: 100px;">
+      <h2 style="color: #ef4444; font-size: 32px;">🔒 内容已隐藏</h2>
+      <p class="muted" style="margin: 20px 0;">登录后即可查看俱乐部的重大事件。</p>
+      <a href="#/login" class="btn">立即登录解锁</a>
+    </div>
+    <div class="container page real-content" style="display: none;">
+      <h1 class="section-title" data-i18n="eventsTitle">重大事件</h1>
+      <p class="section-sub" data-i18n="eventsSub">以下项目均真实存在，夸大成分有限</p>
+      <div class="grid" id="eventsList"></div>
+    </div>
+  </section>
+
+  <!-- 4. 管理层 -->
+  <section class="view" data-view="leadership">
+    <div class="container page">
+      <h1 class="section-title" data-i18n="leadershipTitle">管理层</h1>
+      <p class="section-sub" data-i18n="leadershipSub">头衔均经本人同意（大概）</p>
+      <div class="members" id="membersList"></div>
+    </div>
+  </section>
+
+  <section class="view" data-view="search">
+    <div class="container page">
+      <h1 class="section-title" data-i18n="searchTitle">搜索</h1>
+      <input class="search-input" id="searchInput" placeholder="搜成员、事件、历史……">
+      <p class="muted" id="searchEmpty" style="display:none" data-i18n="searchEmpty">没搜到。可能这个名字也是编的。</p>
+      <ul class="result-list" id="searchResults"></ul>
+    </div>
+  </section>
+
+  <section class="view" data-view="login">
+    <div class="container page">
+      <h1 class="section-title" data-i18n="loginTitle">登录 HJC谎精俱乐部</h1>
+      <form class="form card" id="loginForm">
+        <input type="text" id="loginEmail" placeholder="输入名字（如 zzy）" required>
+        <input type="password" id="loginPassword" placeholder="密码" required>
+        <p class="error" id="loginError"></p>
+        <button type="submit" class="btn" data-i18n="submit">登录</button>
+        <p class="muted center-text"><a href="#/register" data-i18n="noAccount">还没有账号？去注册</a></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="view" data-view="register">
+    <div class="container page">
+      <h1 class="section-title" data-i18n="registerTitle">注册 HJC谎精俱乐部</h1>
+      <form class="form card" id="registerForm">
+        <input type="text" id="registerEmail" placeholder="输入名字（如 zhangsan）" required>
+        <input type="password" id="registerPassword" placeholder="密码（至少 6 位）" required minlength="6">
+        <p class="error" id="registerError"></p>
+        <button type="submit" class="btn" data-i18n="registerSubmit">注册</button>
+        <p class="muted center-text"><a href="#/login" data-i18n="hasAccount">已有账号？去登录</a></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="view" data-view="settings">
+    <div class="container page">
+      <h1 class="section-title" data-i18n="settings">设置</h1>
+      <div class="card" style="max-width:420px;margin:0 auto">
+        <h3 data-i18n="language">语言</h3>
+        <div class="row" style="justify-content:flex-start">
+          <button class="btn ghost" data-lang="zh">中文</button>
+          <button class="btn ghost" data-lang="en">English</button>
+        </div>
+      </div>
+      <div class="card" style="max-width:420px;margin:20px auto; border-color:#fca5a5;">
+        <h3 style="color:#dc2626;">危险操作</h3>
+        <p class="muted" style="font-size:13px; margin-bottom:12px;">注销后，您的账号和所有数据将被永久删除，无法恢复。</p>
+        <button class="btn" id="deleteAccountBtn" style="background:#dc2626; width:100%;">注销账号</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" data-view="admin">
+    <div class="container page">
+      <h1 class="section-title" data-i18n="adminTitle">管理后台</h1>
+      <p class="section-sub" id="adminCount"></p>
+      <div class="card">
+        <table style="width:100%;border-collapse:collapse" id="adminTable"></table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+</body>
+</html>
